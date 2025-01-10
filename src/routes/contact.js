@@ -10,7 +10,7 @@ router.post('/send-message', contactValidation, async (req, res) => {
     try {
         const htmlContent = `
         <div>
-            <h2>Contact Form Submission</h2>
+            <h2>Message from pushtoprofit.com user</h2>
             <p><strong>Name:</strong> ${fullName}</p>
             <p><strong>Email:</strong> ${email}</p>
             <p><strong>Message:</strong> ${message.replace(/\n/g, '<br>')}</p>
