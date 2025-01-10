@@ -15,10 +15,21 @@ const __dirname = path.dirname(__filename);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'src', 'views'));
 
-app.use(cors({
-    origin: 'http://localhost:5173/contact', // Allow requests only from your frontend
-    methods: ['GET', 'POST'],        // Allowed HTTP methods
-  }));
+const allowedOrigins = ['http://localhost:5173', 'https://your-production-site.com'];
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    methods: ['GET', 'POST'],
+  })
+);
+
 
 // Middleware to parse JSON and URL-encoded data
 app.use(express.json());
