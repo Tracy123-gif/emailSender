@@ -11,7 +11,7 @@ dotenv.config();
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const frontendURL = process.env.FRONTEND_PRODUCTION_URL
+const frontendURL = process.env.FRONTEND_PRODUCTION_URL;
 
 // Set EJS as the view engine
 app.set('view engine', 'ejs');

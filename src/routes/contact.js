@@ -4,7 +4,7 @@ import contactValidation from '../middleware/contactValidation.js'; // Import va
 
 const router = express.Router();
 
-router.post('/send-message', contactValidation, async (req, res) => {
+router.post('/contact/send-message', contactValidation, async (req, res) => {
     const { fullName, email, message } = req.body;
 
     try {
