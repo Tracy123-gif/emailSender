@@ -1,7 +1,9 @@
-import { createTransport } from 'nodemailer';
-require('dotenv').config();
+import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
 
-const transporter = createTransport({
+dotenv.config(); // Load environment variables
+
+const transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
         user: process.env.EMAIL_USER,
@@ -9,5 +11,4 @@ const transporter = createTransport({
     },
 });
 
-export default transporter;
-
+export default transporter; // Export the transporter
