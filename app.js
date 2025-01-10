@@ -3,6 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 import contactRoutes from './src/routes/contact.js';
+import cors from 'cors'
 
 dotenv.config();
 
@@ -13,6 +14,9 @@ const __dirname = path.dirname(__filename);
 // Set EJS as the view engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'src', 'views'));
+
+app.use(cors())
+
 
 // Middleware to parse JSON and URL-encoded data
 app.use(express.json());
