@@ -15,8 +15,10 @@ const __dirname = path.dirname(__filename);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'src', 'views'));
 
-app.use(cors())
-
+app.use(cors({
+    origin: 'http://localhost:5173', // Allow requests only from your frontend
+    methods: ['GET', 'POST'],        // Allowed HTTP methods
+  }));
 
 // Middleware to parse JSON and URL-encoded data
 app.use(express.json());
