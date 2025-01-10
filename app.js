@@ -5,17 +5,19 @@ import dotenv from 'dotenv';
 import contactRoutes from './src/routes/contact.js';
 import cors from 'cors'
 
+
 dotenv.config();
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const frontendURL = process.env.FRONTEND_PRODUCTION_URL
 
 // Set EJS as the view engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'src', 'views'));
 
-const allowedOrigins = ['http://localhost:5173', 'https://your-production-site.com'];
+const allowedOrigins = ['http://localhost:5173', frontendURL];
 
 app.use(
   cors({
