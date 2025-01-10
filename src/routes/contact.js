@@ -4,13 +4,13 @@ import contactValidation from '../middleware/contactValidation.js'; // Import va
 
 const router = express.Router();
 
-router.post('/contact/send-message', contactValidation, async (req, res) => {
+router.post('/send-message', contactValidation, async (req, res) => {
     const { fullName, email, message } = req.body;
 
     try {
         const htmlContent = `
         <div>
-            <h2>Message from pushtoprofit.com user</h2>
+            <h2>Message from pushtoprofit.com</h2>
             <p><strong>Name:</strong> ${fullName}</p>
             <p><strong>Email:</strong> ${email}</p>
             <p><strong>Message:</strong> ${message.replace(/\n/g, '<br>')}</p>
