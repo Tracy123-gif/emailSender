@@ -16,7 +16,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'src', 'views'));
 
 app.use(cors({
-    origin: 'https://pushtoprofit-git-main-tracy123-gifs-projects.vercel.app/', // Allow requests only from your frontend
+    origin: 'https://pushtoprofit-git-main-tracy123-gifs-projects.vercel.app/contact', // Allow requests only from your frontend
     methods: ['GET', 'POST'],        // Allowed HTTP methods
   }));
 
