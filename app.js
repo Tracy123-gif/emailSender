@@ -19,13 +19,25 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'src', 'views'));
 
 // CORS Configuration
+
+const allowedOrigins = [
+  'http://localhost:5173', FRONTEND_URL// Production Frontend
+];
+
 app.use(
   cors({
-    origin: FRONTEND_URL, // Restrict to frontend domain
-    methods: ['GET', 'POST', 'OPTIONS'], // Allow necessary HTTP methods
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true); // Allow the request
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    methods: ['GET', 'POST', 'OPTIONS'], // Allowed HTTP methods
     credentials: true, // Allow cookies if needed
   })
 );
+
 
 // Middleware to parse JSON and URL-encoded data
 app.use(express.json());
