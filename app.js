@@ -12,18 +12,29 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Environment Variables
-// const FRONTEND_URL = process.env.FRONTEND_PRODUCTION_URL || 'http://localhost:5173';
+const PORT = process.env.PORT || 5000; // Set default port to 5000 if not in .env
+
+const frontendURL = process.env.FRONTEND_PRODUCTION_URL;
+
+// const allowedOrigins = [frontendURL, 'http://localhost:5173'];
+
+// Middleware: Enable CORS
+// app.use(
+//   cors({
+//     origin: (origin, callback) => {
+//       if (!origin || allowedOrigins.includes(origin)) {
+//         callback(null, true); // Allow the request
+//       } else {
+//         callback(new Error('Not allowed by CORS'));
+//       }
+//     },
+//     methods: ['GET', 'POST', 'OPTIONS'], // Allowed HTTP methods
+//     credentials: true, // Allow cookies if needed
+//   })
+// );
+app.use(cors())
 
 
-const allowedOrigins = ['https://pushtoprofit.vercel.app/contact', 'http://localhost:5173'];
-
-app.use(
-  cors({
-    origin: allowedOrigins, // Allow specific origins
-    methods: ['GET', 'POST', 'OPTIONS'], // Allow these HTTP methods
-    credentials: true, // Allow credentials (if needed)
-  })
-);
 
 // Middleware to parse JSON and URL-encoded data
 app.use(express.json());
@@ -35,11 +46,5 @@ app.use('/contact', contactRoutes);
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Start the server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-  console.log(`Allowed Origins:`, allowedOrigins);
-});
 
 export default app;
