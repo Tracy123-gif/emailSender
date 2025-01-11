@@ -12,16 +12,16 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Environment Variables
-const FRONTEND_URL = process.env.FRONTEND_PRODUCTION_URL || 'http://localhost:5173';
+// const FRONTEND_URL = process.env.FRONTEND_PRODUCTION_URL || 'http://localhost:5173';
 
-// Allowed Origins for CORS
-const allowedOrigins = [FRONTEND_URL, 'http://localhost:5173'];
+
+const allowedOrigins = ['https://pushtoprofit.vercel.app', 'http://localhost:5173'];
 
 app.use(
   cors({
-    origin: allowedOrigins, // Allow requests from these origins
-    methods: ['GET', 'POST', 'OPTIONS'], // Allowed HTTP methods
-    credentials: true, // Allow cookies if needed
+    origin: allowedOrigins, // Allow specific origins
+    methods: ['GET', 'POST', 'OPTIONS'], // Allow these HTTP methods
+    credentials: true, // Allow credentials (if needed)
   })
 );
 
