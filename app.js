@@ -15,7 +15,7 @@ const __dirname = path.dirname(__filename);
 // const FRONTEND_URL = process.env.FRONTEND_PRODUCTION_URL || 'http://localhost:5173';
 
 
-const allowedOrigins = ['https://pushtoprofit.vercel.app', 'http://localhost:5173'];
+const allowedOrigins = ['https://pushtoprofit.vercel.app/contact', 'http://localhost:5173'];
 
 app.use(
   cors({
