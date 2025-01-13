@@ -12,9 +12,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Environment Variables
-const PORT = process.env.PORT || 5000; // Set default port to 5000 if not in .env
+//const PORT = process.env.PORT || 5000; // Set default port to 5000 if not in .env
 
-const frontendURL = process.env.FRONTEND_PRODUCTION_URL;
+//const frontendURL = process.env.FRONTEND_PRODUCTION_URL;
 
 // const allowedOrigins = [frontendURL, 'http://localhost:5173'];
 
